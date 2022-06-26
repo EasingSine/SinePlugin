@@ -1,0 +1,509 @@
+ -- [[ Enum.EasingStyle.Sine ]] -- 
+local PluginToolBar = plugin:CreateToolbar("Cones")
+local MainCone = PluginToolBar:CreateButton("Traffic Cone", "Main Cone", "http://www.roblox.com/asset/?id=10022830202", "Traffic Cone") -- traffic construction --
+
+local SineCone = PluginToolBar:CreateButton("Sine Cone", "This cone can be useful for explaining what diffrent objects and functions do. For example how to write down an easing style: Enum.EasingStyle.Sine.", "http://www.roblox.com/asset/?id=10022830202", "Sine Cone") 
+
+local OpenedWindow = false
+
+local TweenService = game:GetService("TweenService")
+
+local Lighting = game:GetService("Lighting")
+local MainWindow = script.Parent.Window.ConeUI
+local ContentsWin = MainWindow.Window.Main
+local ContentsWin2 = MainWindow.Window.TitleBar
+local ContentsWin3 = MainWindow.Window.Main.SettingsButton
+
+local ContentsWin4 = MainWindow.Window.Main.AboutButton
+
+local ContentsWin5 = MainWindow.Window.Main.FileExplorerButton
+
+local ContentsWin6 = MainWindow.Window.Main.CommandsButton
+
+local ContentsWin7 = MainWindow.Window.TitleBar.Exit
+local ContentsWin8 = MainWindow.Window.TitleBar.Minimize
+
+local ContentsWin9 = MainWindow.Window.TitleBar.Title
+
+local CloseEffect = TweenService:Create(
+	MainWindow.Window,
+	TweenInfo.new(1),
+	{BackgroundTransparency = 1}
+)
+
+local OpenEffect = TweenService:Create(
+	MainWindow.Window,
+	TweenInfo.new(1),
+	{BackgroundTransparency = 0}
+)
+
+local CloseEffect2 = TweenService:Create(
+	ContentsWin2,
+	TweenInfo.new(1),
+	{BackgroundTransparency = 1}
+)
+
+local OpenEffect2 = TweenService:Create(
+	ContentsWin2,
+	TweenInfo.new(1),
+	{BackgroundTransparency = 0}
+)
+
+local CloseEffect3 = TweenService:Create(
+	ContentsWin3,
+	TweenInfo.new(1),
+	{BackgroundTransparency = 1}
+)
+
+local OpenEffect3 = TweenService:Create(
+	ContentsWin3,
+	TweenInfo.new(1),
+	{BackgroundTransparency = 0}
+)
+
+local CloseEffect4 = TweenService:Create(
+	ContentsWin4,
+	TweenInfo.new(1),
+	{BackgroundTransparency = 1}
+)
+
+local OpenEffect4 = TweenService:Create(
+	ContentsWin4,
+	TweenInfo.new(1),
+	{BackgroundTransparency = 0}
+)
+
+local CloseEffect5 = TweenService:Create(
+	ContentsWin5,
+	TweenInfo.new(1),
+	{BackgroundTransparency = 1}
+)
+
+local OpenEffect5 = TweenService:Create(
+	ContentsWin5,
+	TweenInfo.new(1),
+	{BackgroundTransparency = 0}
+)
+
+local CloseEffect6 = TweenService:Create(
+	ContentsWin6,
+	TweenInfo.new(1),
+	{BackgroundTransparency = 1}
+)
+
+local OpenEffect6 = TweenService:Create(
+	ContentsWin6,
+	TweenInfo.new(1),
+	{BackgroundTransparency = 0}
+)
+
+local CloseEffect7 = TweenService:Create(
+	ContentsWin7,
+	TweenInfo.new(1),
+	{BackgroundTransparency = 1}
+)
+
+local OpenEffect7 = TweenService:Create(
+	ContentsWin7,
+	TweenInfo.new(1),
+	{BackgroundTransparency = 0}
+)
+
+local CloseEffect8 = TweenService:Create(
+	ContentsWin8,
+	TweenInfo.new(1),
+	{BackgroundTransparency = 1}
+)
+
+local OpenEffect8 = TweenService:Create(
+	ContentsWin8,
+	TweenInfo.new(1),
+	{BackgroundTransparency = 0}
+)
+
+local CloseEffect9 = TweenService:Create(
+	ContentsWin9,
+	TweenInfo.new(1),
+	{BackgroundTransparency = 1}
+)
+
+local OpenEffect9 = TweenService:Create(
+	ContentsWin9,
+	TweenInfo.new(1),
+	{BackgroundTransparency = 0}
+)
+
+-- wow guys --
+
+-- wow --
+
+MainWindow.Parent = game:GetService("CoreGui")
+
+MainCone.Click:Connect(function()
+	if OpenedWindow then
+		MainWindow.Window.Visible = false
+		OpenedWindow = false
+	else
+		MainWindow.Window.Visible = true
+		OpenedWindow = true
+	end
+end)
+
+MainWindow.Window.AnchorPoint = Vector2.new(0.5)
+MainWindow.Window.Position = UDim2.new(0.5,0,0.2,0)
+
+local versionLabel = MainWindow.Window.Main.VersionLabel
+local exitLabel = MainWindow.Window.TitleBar.Exit
+local minimize = MainWindow.Window.TitleBar.Minimize
+
+local exitLabel2 = MainWindow.Window.TitleBar.Exit
+
+exitLabel.MouseButton1Click:Connect(function()
+	MainWindow.Window.Visible = false
+end)
+
+minimize.MouseButton1Click:Connect(function()
+	MainWindow.Window.Visible = false
+end)
+
+versionLabel.Text = ("Version: 2.30")
+
+local CMD_Window = script.Parent.Window.CMD
+
+local CMD_Prompt = CMD_Window.CMDS
+local exitLabel2 = CMD_Prompt.TitleBar.Exit
+
+CMD_Window.Parent = game:GetService("CoreGui")
+
+CMD_Prompt.Parent = CMD_Window
+
+MainWindow.Window.Main.CommandsButton.MouseButton1Click:Connect(function()
+	CMD_Prompt.Visible = true
+end)
+
+exitLabel2.MouseButton1Click:Connect(function()
+	CMD_Prompt.Visible = false
+end)
+
+-- Command Prompt Functions --
+
+local InsertService = game:GetService("InsertService")
+
+CMD_Prompt.Main.HelpButton.MouseButton1Click:Connect(function()
+	CMD_Prompt.Main.Commanders.Text = "Click InsertModule Script to insert a module script. click create folder to create new folder, click change time of day if you wanna change time of day"
+end)
+
+CMD_Prompt.Main.CreateFolderProperty.MouseButton1Click:Connect(function()
+	
+	local insertFolder = Instance.new("Folder")
+	insertFolder.Parent = game.Workspace
+	
+	insertFolder.Name = ("New Folder")
+	
+	print("Inserted New Folder")
+	
+end)
+
+
+
+CMD_Prompt.Main.InsertModuleScriptProperty.MouseButton1Click:Connect(function()
+
+	local newModule = Instance.new("ModuleScript")
+	newModule.Parent = game.Workspace
+
+	newModule.Name = ("New ModuleScript")
+
+	print("Inserted New ModuleScript")
+
+end)
+
+CMD_Prompt.Main.TimeOfDayProperty.MouseButton1Click:Connect(function()
+	
+	CMD_Window.PropertyWindow.Visible = true
+	
+end)
+
+local TimeProperty = CMD_Window.PropertyWindow
+local timerLabel = Lighting.TimeOfDay
+
+local exitLabel3 = TimeProperty.TitleBar.Exit
+local minimize3 = TimeProperty.TitleBar.Minimize
+
+TimeProperty.Main.CurrentTimeLabel.Text = Lighting.TimeOfDay
+
+TimeProperty.Main.IncTime.MouseButton1Click:Connect(function()
+	
+	-- Lighting.TimeOfDay.format(Lighting.TimeOfDay + 1)
+	
+	TimeProperty.Main.CurrentTimeLabel.Text = Lighting.TimeOfDay
+	
+end)
+
+TimeProperty.Main.DecTime.MouseButton1Click:Connect(function()
+
+	-- Lighting.TimeOfDay.format(Lighting.TimeOfDay - 1)
+
+	TimeProperty.Main.CurrentTimeLabel.Text = Lighting.TimeOfDay
+
+end)
+
+TimeProperty.Main.SetNight.MouseButton1Click:Connect(function()
+
+	Lighting.TimeOfDay = 0
+
+	TimeProperty.Main.CurrentTimeLabel.Text = Lighting.TimeOfDay
+
+end)
+
+TimeProperty.Main.SetDay.MouseButton1Click:Connect(function()
+
+	Lighting.TimeOfDay = 14
+
+	TimeProperty.Main.CurrentTimeLabel.Text = Lighting.TimeOfDay
+
+end)
+
+print("Time Property Can Be Changed with Cone") -- tips -- 
+
+exitLabel3.MouseButton1Click:Connect(function()
+	
+	TimeProperty.Visible = false
+	
+end)
+
+minimize3.MouseButton1Click:Connect(function()
+
+	TimeProperty.Visible = false
+
+end)
+
+print("Plugin made by EasingSine")
+
+print("Version 2.3")
+
+TimeProperty.Draggable = true
+
+CMD_Prompt.Draggable = true
+
+MainWindow.Window.Draggable = true
+
+-- this took a long time to make --
+--TweenInfo.new(1, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut)
+
+local sineEnum = script.Parent.Window.SineConeUI
+
+sineEnum.Parent = game:GetService("CoreGui")
+
+SineCone.Click:Connect(function()
+	if OpenedWindow then
+		sineEnum.Window.Visible = false
+		OpenedWindow = false
+	else
+		sineEnum.Window.Visible = true
+		OpenedWindow = true
+	end
+end)
+
+local exitLabel4 = sineEnum.Window.TitleBar.Exit
+local minimize4 = sineEnum.Window.TitleBar.Minimize
+
+local exitLabel5 = sineEnum.GetStartedWindow.TitleBar.Exit
+local minimize5 = sineEnum.GetStartedWindow.TitleBar.Minimize
+
+local exitLabel7 = sineEnum.EnumWindow.TitleBar.Exit
+local minimize7 = sineEnum.EnumWindow.TitleBar.Minimize
+
+local exitLabel6 = sineEnum.WhatAreClassNamesWindow.TitleBar.Exit
+local minimize6 = sineEnum.WhatAreClassNamesWindow.TitleBar.Minimize
+
+sineEnum.Window.Main.GetStarted.MouseButton1Click:Connect(function()
+	sineEnum.GetStartedWindow.Visible = true
+end)
+
+sineEnum.Window.Main.ClassNameTutorial.MouseButton1Click:Connect(function()
+	sineEnum.WhatAreClassNamesWindow.Visible = true
+end)
+
+sineEnum.Window.Main.EasingStyleButton.MouseButton1Click:Connect(function()
+	sineEnum.EnumWindow.Visible = true
+end)
+
+sineEnum.Window.TitleBar.Exit.MouseButton1Click:Connect(function()
+	sineEnum.Window.Visible = false
+end)
+
+sineEnum.Window.TitleBar.Minimize.MouseButton1Click:Connect(function()
+	sineEnum.Window.Visible = false
+end)
+
+-- this took long time to make --
+
+exitLabel5.MouseButton1Click:Connect(function()
+	sineEnum.GetStartedWindow.Visible = false
+end)
+
+minimize5.MouseButton1Click:Connect(function()
+	sineEnum.GetStartedWindow.Visible = false
+end)
+
+exitLabel6.MouseButton1Click:Connect(function()
+	sineEnum.WhatAreClassNamesWindow.Visible = false
+end)
+
+minimize6.MouseButton1Click:Connect(function()
+	sineEnum.WhatAreClassNamesWindow.Visible = false
+end)
+
+exitLabel7.MouseButton1Click:Connect(function()
+	sineEnum.EnumWindow.Visible = false
+end)
+
+minimize7.MouseButton1Click:Connect(function()
+	sineEnum.EnumWindow.Visible = false
+end)
+
+-- lolz --
+
+-- lol --
+
+sineEnum.Window.Draggable = true
+sineEnum.EnumWindow.Draggable = true
+sineEnum.GetStartedWindow.Draggable = true
+sineEnum.WhatAreClassNamesWindow.Draggable = true
+
+local function Themes()
+	
+	local DefaultTheme = sineEnum.Window.BackgroundColor3 == Color3.fromRGB(170, 255, 0)
+	
+	local NewTheme = sineEnum.Window.BackgroundColor3 == Color3.fromRGB(255, 0, 0)
+	
+end
+
+local ThemeTable = sineEnum.Name
+
+print("Pylon is supposed to be like a operating system kinda, but inside roblox studio. We are adding themes, fixing bugs, icon pictures, more features.")
+
+if game.PlaceVersion == 10 then
+	print(".Your current game version is Version 10.")
+end
+
+if Lighting.TimeOfDay == 24 then
+	print("THis game has reached night time")
+end
+
+if Lighting.TimeOfDay == 6 then
+	print("THis game has reached day time")
+end
+
+----- sine ----
+
+if game.PlaceVersion == 20 then
+	print(".Your current game version is Version 20.")
+end
+
+if game.PlaceVersion == 30 then
+	print(".Your current game version is Version 30.")
+end
+
+if game.PlaceVersion == 40 then
+	print(".Your current game version is Version 40.")
+end
+
+if game.PlaceVersion == 50 then
+	print(".Your current game version is Version 50.")
+end
+
+if game.PlaceVersion == 60 then
+	print(".Your current game version is Version 60.")
+end
+
+if game.PlaceVersion == 70 then
+	print(".Your current game version is Version 70.")
+end
+
+if game.PlaceVersion == 80 then
+	print(".Your current game version is Version 80.")
+end
+
+if game.PlaceVersion == 90 then
+	print(".Your current game version is Version 90.")
+end
+
+if game.PlaceVersion == 100 then
+	print(".Your current game version is Version 100.")
+end
+
+if game.PlaceVersion == 110 then
+	print(".Your current game version is Version 110.")
+end
+
+if game.PlaceVersion == 120 then
+	print(".Your current game version is Version 120.")
+end
+
+if game.PlaceVersion == 130 then
+	print(".Your current game version is Version 130.")
+end
+
+print("-This plugins code is over 300 lines long.")
+
+--  more useful stuff --
+
+MainWindow.Window.Main.AboutButton.MouseButton1Click:Connect(function()
+	MainWindow.New.Draggable = true
+	MainWindow.New.Visible = true
+	MainWindow.New.Draggable = true
+	wait(10)
+	MainWindow.New.Visible = false
+end)
+
+MainWindow.Window.Main.SettingsButton.MouseButton1Click:Connect(function()
+	MainWindow.NewNotification.Draggable = true
+	MainWindow.NewNotification.Visible = true
+	MainWindow.NewNotification
+	
+	.Draggable = true
+	wait(10)
+	MainWindow.NewNotification.Visible = false
+end)
+
+-- made by EasingSine --
+
+-- created june 22th 2022, --
+
+-- released june 26th 2022, --
+
+-- next update 28th of june 2022. --
+
+local filesWindow = script.Parent.Window.Files
+
+filesWindow.Parent = game:GetService("CoreGui")
+
+MainWindow.Window.Main.FileExplorerButton.MouseButton1Click:Connect(function()
+	filesWindow.FileExplorer.Draggable = true
+	filesWindow.FileExplorer.Visible = true
+	filesWindow.FileExplorer.Draggable = true
+end)
+
+filesWindow.FileExplorer.TitleBar.Exit.MouseButton1Click:Connect(function()
+	filesWindow.FileExplorer.Draggable = true
+	filesWindow.FileExplorer.Visible = false
+	filesWindow.FileExplorer.Draggable = true
+end)
+
+filesWindow.FileExplorer.TitleBar.Minimize.MouseButton1Click:Connect(function()
+	filesWindow.FileExplorer.Draggable = true
+	filesWindow.FileExplorer.Visible = false
+	filesWindow.FileExplorer.Draggable = true
+end)
+
+filesWindow.FileExplorer.Draggable = true
+
+-- Sine Production --
+-- Nice Number --
+
+-- Enum.EasingStyle.Sine --
+
+-- SINE -- 
+
+-- LINE 500 --
